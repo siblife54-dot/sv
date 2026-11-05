@@ -1,0 +1,7 @@
+{
+  "source": "User-provided IMG_8864.HEIC",
+  "purpose": "Portrait for the owner's personal Siberian Marketing portfolio",
+  "processing": "Background removal with image editing tool; resized and exported to WebP with source metadata stripped",
+  "prompt": "Edit this exact photograph ONLY to remove the background. Produce a clean high-resolution transparent PNG cutout of the same man, from his head to the bottom of his white polo shirt, preserving his exact face, identity, hair, facial expression, body proportions, hands, clothing, lighting and all photographic details. Do not beautify, redraw, stylize, relight or change the person. Remove all bookshelves, lamps and background objects, including background seen around his arms. Preserve natural hair and clothing edges with a precise alpha matte. Keep complete head and both arms and hands. This is a production portrait cutout for his personal marketing portfolio.",
+  "files": ["portrait-640.webp", "portrait-1000.webp"]
+}
