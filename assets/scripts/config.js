@@ -1,5 +1,4 @@
-// Add the real Telegram URL when supplied. No fake destinations or contacts.
+// Telegram is a normal HTML link. Cases activate only when the section exists.
 export const siteConfig = {
-  telegramUrl: null,
   casesSectionId: "cases",
 };
