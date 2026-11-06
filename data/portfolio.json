@@ -1,0 +1,155 @@
+{
+  "cases": [
+    {
+      "id": "vremya-dela",
+      "name": "Время дела",
+      "kind": "Профориентационный лагерь",
+      "location": "Краснодарский край · Москва · Санкт-Петербург",
+      "description": "Реклама лагеря для родительской аудитории в нескольких регионах.",
+      "period": "3 месяца",
+      "leads": 507,
+      "leadLabel": "обращений",
+      "cost": "575,16",
+      "costLabel": "за обращение",
+      "spend": "291 605,02",
+      "sourceNote": "Итог по 22 кампаниям: лид-формы и сообщения в сообщество.",
+      "sourceScreenshots": [1, 2],
+      "evidence": [],
+      "video": {
+        "name": "Егор Аникин",
+        "embed": "https://vk.ru/video_ext.php?oid=-218828564&id=456239082&hash=fc34eb1371faa29d",
+        "url": "https://vk.ru/video-218828564_456239082",
+        "poster": null
+      }
+    },
+    {
+      "id": "umnaya-shkola",
+      "name": "УмнаяШкола",
+      "kind": "Детские лагеря",
+      "location": "Алтай · Новосибирск",
+      "description": "Кампании по двум направлениям: смены на Алтае и в Новосибирске.",
+      "period": "13 января — 17 февраля 2025",
+      "leads": 151,
+      "leadLabel": "заявка",
+      "cost": "373,22",
+      "costLabel": "за заявку",
+      "spend": "56 355,70",
+      "sourceNote": "Итог по двум кампаниям с лид-формами.",
+      "sourceScreenshots": [7],
+      "evidence": [],
+      "video": {
+        "name": "Максим",
+        "embed": "https://vk.ru/video_ext.php?oid=-218828564&id=456239083&hash=c9cf6f4ad0a9154b",
+        "url": "https://vk.ru/video-218828564_456239083",
+        "poster": null
+      },
+      "audio": {
+        "src": "./assets/audio/maksim-umnaya-shkola.mp3",
+        "name": "Максим",
+        "project": "УмнаяШкола",
+        "duration": "0:14"
+      }
+    },
+    {
+      "id": "konoplev",
+      "name": "Футбольный лагерь Коноплёва",
+      "kind": "Всероссийский футбольный лагерь",
+      "location": "Самара",
+      "description": "Привлечение родителей, выбирающих футбольный лагерь для ребёнка.",
+      "period": "1,5 месяца",
+      "leads": 163,
+      "leadLabel": "заявки",
+      "cost": "381,14",
+      "costLabel": "за заявку",
+      "spend": "62 125,83",
+      "sourceNote": "Кампания с лид-формой. Оплаты в переписке — отдельный комментарий клиента, не итог рекламного кабинета.",
+      "sourceScreenshots": [4, 5],
+      "evidence": [],
+      "review": {
+        "name": "Андрей Юрьевич",
+        "project": "Футбольный лагерь Коноплёва",
+        "quote": "Много людей с Ульяновска",
+        "context": "В той же переписке Андрей сообщает о трёх оплатах.",
+        "sourceScreenshot": 6,
+        "image": null
+      }
+    },
+    {
+      "id": "zvezdochka",
+      "name": "Звёздочка",
+      "kind": "Детский оздоровительный лагерь",
+      "location": "Республика Башкортостан",
+      "period": "3 месяца",
+      "leads": 596,
+      "leadLabel": "заявок",
+      "cost": "239,24",
+      "costLabel": "за заявку",
+      "spend": "142 588,36",
+      "sourceNote": "Итог по четырём кампаниям с лид-формами.",
+      "sourceScreenshots": [8, 9],
+      "evidence": []
+    },
+    {
+      "id": "aviator",
+      "name": "Авиатор",
+      "kind": "Детский лагерь · школа дронов",
+      "location": "Москва",
+      "period": "1 месяц",
+      "leads": 186,
+      "leadLabel": "обращений",
+      "cost": "490,43",
+      "costLabel": "за обращение",
+      "spend": "91 220,87",
+      "sourceNote": "Итог по 15 кампаниям: лид-формы и сообщения в сообщество.",
+      "sourceScreenshots": [10, 11],
+      "evidence": []
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "alena",
+      "name": "Алёна",
+      "project": "Лагерь 24",
+      "quote": "Заявки приходят одна за другой ) это приятно, есть надежда на хороший исход событий )))",
+      "sourceScreenshot": 12,
+      "image": null
+    },
+    {
+      "id": "maria",
+      "name": "Мария",
+      "project": "Лагерь «Чайка»",
+      "audio": {
+        "src": "./assets/audio/maria-chaika.mp3",
+        "name": "Мария",
+        "project": "Лагерь «Чайка»",
+        "duration": "0:23"
+      }
+    },
+    {
+      "id": "anna",
+      "name": "Анна",
+      "project": null,
+      "quote": "Спасибо большое вообще везде отключаем не успевают менеджеры)",
+      "sourceScreenshot": 14,
+      "image": null
+    },
+    {
+      "id": "andrey",
+      "name": "Андрей Юрьевич",
+      "project": "Футбольный лагерь Коноплёва",
+      "quote": "хорошая работа! И заявка идет не пустая, а конкретику люди спрашивают.",
+      "caseId": "konoplev",
+      "sourceScreenshot": 15,
+      "image": null
+    },
+    {
+      "id": "maksim",
+      "name": "Максим",
+      "project": "УмнаяШкола",
+      "quote": "Игорь, здравствуйте! Результат хороший! Продолжаем работать. Я наберу",
+      "caseId": "umnaya-shkola",
+      "sourceScreenshot": 16,
+      "image": null
+    }
+  ]
+}
