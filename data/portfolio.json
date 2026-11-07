@@ -13,18 +13,31 @@
       "costLabel": "за обращение",
       "spend": "291 605,02",
       "sourceNote": "Итог по 22 кампаниям: лид-формы и сообщения в сообщество.",
-      "sourceScreenshots": [1, 2],
-      "evidence": [],
+      "sourceScreenshots": [
+        1,
+        2
+      ],
+      "evidence": [
+        {
+          "src": "./assets/images/cases/vremya-stats.jpg",
+          "alt": "Время дела: 507 обращений, 575,16 ₽ за обращение. Скриншот рекламного кабинета.",
+          "width": 2055,
+          "height": 1098
+        }
+      ],
       "video": {
         "name": "Егор Аникин",
         "embed": "https://vk.ru/video_ext.php?oid=-218828564&id=456239082&hash=fc34eb1371faa29d",
         "url": "https://vk.ru/video-218828564_456239082",
-        "poster": null
+        "poster": "./assets/images/reviews/vremya-poster.jpg",
+        "local": "./assets/video/vremya-review.mp4",
+        "width": 480,
+        "height": 854
       }
     },
     {
       "id": "umnaya-shkola",
-      "name": "УмнаяШкола",
+      "name": "Умная школа",
       "kind": "Детские лагеря",
       "location": "Алтай · Новосибирск",
       "description": "Кампании по двум направлениям: смены на Алтае и в Новосибирске.",
@@ -35,13 +48,25 @@
       "costLabel": "за заявку",
       "spend": "56 355,70",
       "sourceNote": "Итог по двум кампаниям с лид-формами.",
-      "sourceScreenshots": [7],
-      "evidence": [],
+      "sourceScreenshots": [
+        7
+      ],
+      "evidence": [
+        {
+          "src": "./assets/images/cases/smart-stats.png",
+          "alt": "УмнаяШкола: 151 заявка, 373,22 ₽ за заявку. Скриншот рекламного кабинета.",
+          "width": 1059,
+          "height": 353
+        }
+      ],
       "video": {
         "name": "Максим",
         "embed": "https://vk.ru/video_ext.php?oid=-218828564&id=456239083&hash=c9cf6f4ad0a9154b",
         "url": "https://vk.ru/video-218828564_456239083",
-        "poster": null
+        "poster": "./assets/images/reviews/smart-poster.jpg",
+        "local": "./assets/video/smart-review.mp4",
+        "width": 480,
+        "height": 662
       },
       "audio": {
         "src": "./assets/audio/maksim-umnaya-shkola.mp3",
@@ -63,15 +88,29 @@
       "costLabel": "за заявку",
       "spend": "62 125,83",
       "sourceNote": "Кампания с лид-формой. Оплаты в переписке — отдельный комментарий клиента, не итог рекламного кабинета.",
-      "sourceScreenshots": [4, 5],
-      "evidence": [],
+      "sourceScreenshots": [
+        4,
+        5
+      ],
+      "evidence": [
+        {
+          "src": "./assets/images/cases/konoplev-stats.jpg",
+          "alt": "Футбольный лагерь Коноплёва: 163 заявки, 381,14 ₽ за заявку. Скриншот рекламного кабинета.",
+          "width": 1973,
+          "height": 316
+        }
+      ],
       "review": {
         "name": "Андрей Юрьевич",
         "project": "Футбольный лагерь Коноплёва",
-        "quote": "Много людей с Ульяновска",
-        "context": "В той же переписке Андрей сообщает о трёх оплатах.",
         "sourceScreenshot": 6,
-        "image": null
+        "image": {
+          "src": "./assets/images/reviews/andrey-chat.jpg",
+          "alt": "Переписка с Андреем Юрьевичем: обращения из Ульяновска и сообщение о трёх оплатах.",
+          "preview": "./assets/images/reviews/andrey-chat-detail.webp",
+          "width": 946,
+          "height": 535
+        }
       }
     },
     {
@@ -86,8 +125,18 @@
       "costLabel": "за заявку",
       "spend": "142 588,36",
       "sourceNote": "Итог по четырём кампаниям с лид-формами.",
-      "sourceScreenshots": [8, 9],
-      "evidence": []
+      "sourceScreenshots": [
+        8,
+        9
+      ],
+      "evidence": [
+        {
+          "src": "./assets/images/cases/star-stats.jpg",
+          "alt": "Звёздочка: 596 заявок, 239,24 ₽ за заявку. Скриншот рекламного кабинета.",
+          "width": 2013,
+          "height": 612
+        }
+      ]
     },
     {
       "id": "aviator",
@@ -101,18 +150,33 @@
       "costLabel": "за обращение",
       "spend": "91 220,87",
       "sourceNote": "Итог по 15 кампаниям: лид-формы и сообщения в сообщество.",
-      "sourceScreenshots": [10, 11],
-      "evidence": []
+      "sourceScreenshots": [
+        10,
+        11
+      ],
+      "evidence": [
+        {
+          "src": "./assets/images/cases/aviator-stats.jpg",
+          "alt": "Авиатор: 186 обращений, 490,43 ₽ за обращение. Скриншот рекламного кабинета.",
+          "width": 2120,
+          "height": 816
+        }
+      ]
     }
   ],
   "testimonials": [
     {
       "id": "alena",
       "name": "Алёна",
-      "project": "Лагерь 24",
-      "quote": "Заявки приходят одна за другой ) это приятно, есть надежда на хороший исход событий )))",
+      "project": "Leader Camp",
       "sourceScreenshot": 12,
-      "image": null
+      "image": {
+        "src": "./assets/images/reviews/leader.jpg",
+        "alt": "Алёна: заявки идут полным ходом, три человека купили, ещё около семи думают и отозвались положительно. Скриншот переписки.",
+        "preview": "./assets/images/reviews/leader-detail.webp",
+        "width": 970,
+        "height": 247
+      }
     },
     {
       "id": "maria",
@@ -129,27 +193,42 @@
       "id": "anna",
       "name": "Анна",
       "project": null,
-      "quote": "Спасибо большое вообще везде отключаем не успевают менеджеры)",
       "sourceScreenshot": 14,
-      "image": null
+      "image": {
+        "src": "./assets/images/reviews/anna.png",
+        "alt": "Анна: рекламу отключают, потому что менеджеры не успевают; «Круто раскрутилась в конце». Скриншот переписки.",
+        "preview": "./assets/images/reviews/anna-detail.webp",
+        "width": 977,
+        "height": 478
+      }
     },
     {
       "id": "andrey",
       "name": "Андрей Юрьевич",
       "project": "Футбольный лагерь Коноплёва",
-      "quote": "хорошая работа! И заявка идет не пустая, а конкретику люди спрашивают.",
       "caseId": "konoplev",
       "sourceScreenshot": 15,
-      "image": null
+      "image": {
+        "src": "./assets/images/reviews/andrey.jpg",
+        "alt": "Андрей Юрьевич: «хорошая работа! И заявка идет не пустая, а конкретику люди спрашивают». Пишет также о записях в школу. Скриншот сообщения.",
+        "preview": "./assets/images/reviews/andrey-detail.webp",
+        "width": 790,
+        "height": 187
+      }
     },
     {
       "id": "maksim",
       "name": "Максим",
-      "project": "УмнаяШкола",
-      "quote": "Игорь, здравствуйте! Результат хороший! Продолжаем работать. Я наберу",
+      "project": "Умная школа",
       "caseId": "umnaya-shkola",
       "sourceScreenshot": 16,
-      "image": null
+      "image": {
+        "src": "./assets/images/reviews/maxim.jpg",
+        "alt": "Максим: «Игорь, здравствуйте! Результат хороший! Продолжаем работать. Я наберу». Скриншот переписки.",
+        "preview": "./assets/images/reviews/maxim-detail.webp",
+        "width": 1106,
+        "height": 209
+      }
     }
   ]
 }

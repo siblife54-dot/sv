@@ -4,50 +4,6 @@ const pauseAudio = (container = document) => {
   container.querySelectorAll("audio").forEach((audio) => audio.pause());
 };
 
-document.querySelectorAll("[data-case-tabs]").forEach((workspace) => {
-  const tablist = workspace.querySelector(".case-tabs");
-  const tabs = [...tablist.querySelectorAll("button")];
-  const panels = [...workspace.querySelectorAll("[data-case-panel]")];
-  function select(tab, focus = false) {
-    const current = panels.find((panel) => panel.id === tab.dataset.panel);
-    tabs.forEach((item) => {
-      item.setAttribute("aria-selected", String(item === tab));
-      item.tabIndex = item === tab ? 0 : -1;
-    });
-    panels.forEach((panel) => {
-      panel.hidden = panel !== current;
-      panel.classList.toggle("panel-enter", panel === current);
-      if (panel.hidden) pauseAudio(panel);
-    });
-    if (focus) tab.focus();
-  }
-  tabs.forEach((tab, index) => {
-    tab.setAttribute("role", "tab");
-    tab.setAttribute("aria-controls", tab.dataset.panel);
-    const panel = document.getElementById(tab.dataset.panel);
-    panel.setAttribute("role", "tabpanel");
-    panel.setAttribute("aria-labelledby", tab.id);
-    panel.tabIndex = 0;
-    tab.addEventListener("click", () => select(tab));
-    tab.addEventListener("keydown", (event) => {
-      const destinations = { ArrowRight: (index + 1) % tabs.length, ArrowLeft: (index + tabs.length - 1) % tabs.length, Home: 0, End: tabs.length - 1 };
-      if (!(event.key in destinations)) return;
-      event.preventDefault();
-      select(tabs[destinations[event.key]], true);
-    });
-  });
-  workspace.classList.add("is-enhanced");
-  tablist.setAttribute("role", "tablist");
-  tablist.hidden = false;
-  const hashPanel = tabs.find((tab) => `#${tab.dataset.panel}` === window.location.hash);
-  select(hashPanel || tabs[0]);
-  workspace.closest("article").querySelector("[data-review-jump]").addEventListener("click", (event) => {
-    event.preventDefault();
-    const tab = document.getElementById(event.currentTarget.dataset.reviewJump);
-    select(tab, true);
-  });
-});
-
 document.querySelectorAll("audio").forEach((audio) => {
   audio.addEventListener("play", () => {
     document.querySelectorAll("audio").forEach((other) => { if (other !== audio) other.pause(); });
@@ -70,6 +26,12 @@ let mediaTimeout;
 if (dialog && typeof dialog.showModal === "function") {
   function closeMedia() {
     clearTimeout(mediaTimeout);
+    const video = content.querySelector("video");
+    if (video) {
+      video.pause();
+      video.removeAttribute("src");
+      video.load();
+    }
     content.replaceChildren(); // Removing the iframe stops playback and network work.
     mediaTrigger?.focus({ preventScroll: true });
   }
@@ -97,7 +59,30 @@ if (dialog && typeof dialog.showModal === "function") {
       fallback.target = "_blank";
       fallback.rel = "noopener";
       content.replaceChildren();
-      if (link.dataset.video) {
+      if (link.dataset.localVideo) {
+        const video = document.createElement("video");
+        video.controls = true;
+        video.playsInline = true;
+        video.preload = "none";
+        video.setAttribute("aria-label", title);
+        video.poster = link.dataset.poster;
+        video.src = link.dataset.localVideo;
+        status.textContent = "Нажмите воспроизведение, чтобы посмотреть отзыв.";
+        video.addEventListener("waiting", () => { status.textContent = "Видео загружается… Если связь медленная, попробуйте открыть файл по ссылке ниже."; });
+        video.addEventListener("playing", () => { status.textContent = ""; });
+        video.addEventListener("error", () => { status.textContent = "Не удалось загрузить видео. Откройте файл напрямую или посмотрите отзыв в VK."; });
+        fallback.textContent = "Открыть видеофайл";
+        const vkLink = document.createElement("a");
+        vkLink.href = link.dataset.vkUrl;
+        vkLink.target = "_blank";
+        vkLink.rel = "noopener";
+        vkLink.className = "media-fallback";
+        vkLink.textContent = "Смотреть в VK";
+        const actions = document.createElement("div");
+        actions.className = "media-actions";
+        actions.append(fallback, vkLink);
+        content.append(video, status, actions);
+      } else if (link.dataset.video) {
         const iframe = document.createElement("iframe");
         iframe.title = title;
         iframe.allow = "encrypted-media; fullscreen; picture-in-picture";
@@ -120,39 +105,30 @@ if (dialog && typeof dialog.showModal === "function") {
         image.addEventListener("error", () => { status.textContent = "Не удалось загрузить изображение. Попробуйте открыть оригинал."; });
         image.src = link.href;
         fallback.textContent = "Открыть оригинал в новой вкладке";
-        content.append(image, status, fallback);
+        const stage = document.createElement("div");
+        stage.className = "media-image-stage";
+        stage.tabIndex = 0;
+        stage.setAttribute("role", "region");
+        stage.setAttribute("aria-label", "Изображение. При увеличении используйте прокрутку для просмотра.");
+        stage.append(image);
+        const zoom = document.createElement("button");
+        zoom.type = "button";
+        zoom.textContent = "Реальный размер";
+        zoom.setAttribute("aria-pressed", "false");
+        zoom.addEventListener("click", () => {
+          const expanded = stage.classList.toggle("is-zoomed");
+          zoom.setAttribute("aria-pressed", String(expanded));
+          zoom.textContent = expanded ? "Вписать в экран" : "Реальный размер";
+          stage.scrollTo(0, 0);
+        });
+        const actions = document.createElement("div");
+        actions.className = "media-actions";
+        actions.append(zoom, fallback);
+        content.append(stage, status, actions);
       }
       dialog.showModal();
     });
   });
-}
-
-const track = document.querySelector(".testimonials-track");
-const controls = document.querySelector(".gallery-controls");
-if (track && controls) {
-  const previous = controls.querySelector("[data-gallery-prev]");
-  const next = controls.querySelector("[data-gallery-next]");
-  const syncControls = () => {
-    previous.disabled = track.scrollLeft < 2;
-    next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
-  };
-  const scroll = (direction) => {
-    const cards = track.querySelectorAll(".testimonial");
-    const step = cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : track.clientWidth;
-    track.scrollBy({ left: direction * step, behavior: reducedMotion.matches ? "instant" : "smooth" });
-  };
-  previous.addEventListener("click", () => scroll(-1));
-  next.addEventListener("click", () => scroll(1));
-  track.addEventListener("keydown", (event) => {
-    if (event.target !== track || !["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
-    event.preventDefault();
-    if (event.key === "Home" || event.key === "End") track.scrollTo({ left: event.key === "Home" ? 0 : track.scrollWidth, behavior: "instant" });
-    else scroll(event.key === "ArrowLeft" ? -1 : 1);
-  });
-  track.addEventListener("scroll", syncControls, { passive: true });
-  window.addEventListener("resize", syncControls, { passive: true });
-  controls.hidden = false;
-  syncControls();
 }
 
 if ("IntersectionObserver" in window && !reducedMotion.matches) {

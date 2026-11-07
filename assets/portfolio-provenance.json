@@ -1,0 +1,100 @@
+{
+  "archive": "igor-portfolio-style.zip",
+  "files": [
+    {
+      "path": "assets/images/cases/vremya-stats.jpg",
+      "source": "igor-portfolio-style.zip/dist/assets/vremya-stats.jpg",
+      "sha256": "2a0607116e7f8771bc7d88d1cf9547a808db48bc44116426d7988f410eb01480"
+    },
+    {
+      "path": "assets/images/cases/smart-stats.png",
+      "source": "igor-portfolio-style.zip/dist/assets/smart-stats.png",
+      "sha256": "4b433747e0707cce91705a1f17c59a122b18453bc65781a82690cf5f561ea888"
+    },
+    {
+      "path": "assets/images/cases/konoplev-stats.jpg",
+      "source": "igor-portfolio-style.zip/dist/assets/konoplev-stats.jpg",
+      "sha256": "2a6f78d4f53ffedbc027eabf2066a3a978d9f276d0191d889202d53df1af3fd9"
+    },
+    {
+      "path": "assets/images/cases/star-stats.jpg",
+      "source": "igor-portfolio-style.zip/dist/assets/star-stats.jpg",
+      "sha256": "3a818c35fb6dec1af9dd1999e26f412dcc5ffe8666a71f3cb1e46f9023b85bad"
+    },
+    {
+      "path": "assets/images/cases/aviator-stats.jpg",
+      "source": "igor-portfolio-style.zip/dist/assets/aviator-stats.jpg",
+      "sha256": "7f5aaff9f8597f72edad825f69b35957d4ae3162357b41d883f28e8ce4657949"
+    },
+    {
+      "path": "assets/video/vremya-review.mp4",
+      "source": "igor-portfolio-style.zip/dist/assets/vremya-review.mp4",
+      "sha256": "7f29de94edee63a5eb6d74c2d1af3a179afafdb03531d95a91fca4c23deb7341"
+    },
+    {
+      "path": "assets/images/reviews/vremya-poster.jpg",
+      "source": "igor-portfolio-style.zip/dist/assets/vremya-poster.jpg",
+      "sha256": "f96f768886975384f3147df25acaa763000d69c84d33d8f2ed3442ce3d6b3dc4"
+    },
+    {
+      "path": "assets/video/smart-review.mp4",
+      "source": "igor-portfolio-style.zip/dist/assets/smart-review.mp4",
+      "sha256": "e322d2e32bbf70a092ec4d383d4de8db0b008dc10f8296879447f3a3e2a51da4"
+    },
+    {
+      "path": "assets/images/reviews/smart-poster.jpg",
+      "source": "igor-portfolio-style.zip/dist/assets/smart-poster.jpg",
+      "sha256": "2253d4b4c47fec924c85f9e3e358ecfa5d1d7f110769b1e6feb451ed450c8645"
+    },
+    {
+      "path": "assets/images/reviews/andrey-chat.jpg",
+      "source": "igor-portfolio-style.zip/dist/assets/andrey-chat.jpg",
+      "sha256": "1fc93ac8a278498abb34b78e7fc8f8514b0efc95b69a01661443aa4c2932111d"
+    },
+    {
+      "path": "assets/images/reviews/andrey-chat-detail.webp",
+      "source": "igor-portfolio-style.zip/dist/assets/andrey-chat-detail.webp",
+      "sha256": "55df7916de847d40208f10e54df22c5ae6eb624c11a340bd96dd161f174eb28f"
+    },
+    {
+      "path": "assets/images/reviews/leader.jpg",
+      "source": "igor-portfolio-style.zip/dist/assets/leader.jpg",
+      "sha256": "738fa2f24dc2617ea3a1697d605b2f2c3c9c3ca86c22d2e68285c55ef5361369"
+    },
+    {
+      "path": "assets/images/reviews/leader-detail.webp",
+      "source": "igor-portfolio-style.zip/dist/assets/leader-detail.webp",
+      "sha256": "33ad812f666145b11adbeb14ed1a621e5b7ee8c793d2299f2766ede323f561a2"
+    },
+    {
+      "path": "assets/images/reviews/anna.png",
+      "source": "igor-portfolio-style.zip/dist/assets/anna.png",
+      "sha256": "e0b9b2099efdd38bf785936eeb19cbfe99a626a95dabe19efd1f79c66e7dfc8c"
+    },
+    {
+      "path": "assets/images/reviews/anna-detail.webp",
+      "source": "igor-portfolio-style.zip/dist/assets/anna-detail.webp",
+      "sha256": "62794cdc6d747239a0840b878c4f54d77de5f623d916f043f8a530349e128fa3"
+    },
+    {
+      "path": "assets/images/reviews/andrey.jpg",
+      "source": "igor-portfolio-style.zip/dist/assets/andrey.jpg",
+      "sha256": "3ab3f06b0f729751d3f429291c0ec5e389ade0b19469ca17fd43d60eeebf9656"
+    },
+    {
+      "path": "assets/images/reviews/andrey-detail.webp",
+      "source": "igor-portfolio-style.zip/dist/assets/andrey-detail.webp",
+      "sha256": "e76e0d3f7cdca69d3a7f130811c3342c6adc8b563a7e4340cb40390683e1d18f"
+    },
+    {
+      "path": "assets/images/reviews/maxim.jpg",
+      "source": "igor-portfolio-style.zip/dist/assets/maxim.jpg",
+      "sha256": "a0caaa488ae089ae128882f957dd2fb61e31e32c46e3823dd810e141e0ca7d4b"
+    },
+    {
+      "path": "assets/images/reviews/maxim-detail.webp",
+      "source": "igor-portfolio-style.zip/dist/assets/maxim-detail.webp",
+      "sha256": "710a2c7b85923d4063079a70d07832247425b717234dbb43914082ff5960173b"
+    }
+  ]
+}

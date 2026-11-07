@@ -29,7 +29,7 @@ def image_link(item, label):
     if not item:
         return ""
     return f'''<a class="proof-image" href="{e(item['src'])}" data-image data-caption="{e(item['alt'])}">
-      <img src="{e(item['src'])}" alt="{e(item['alt'])}" width="{int(item['width'])}" height="{int(item['height'])}" loading="lazy" decoding="async">
+      <img src="{e(item.get('preview') or item['src'])}" alt="{e(item['alt'])}" width="{int(item['width'])}" height="{int(item['height'])}" loading="lazy" decoding="async">
       <span>{e(label)} {icon('expand')}</span></a>'''
 
 
@@ -43,17 +43,13 @@ def audio_player(audio):
 def video_link(video, project):
     poster = ""
     if video.get("poster"):
-        poster = f'<img class="video-poster" src="{e(video["poster"])}" alt="" width="640" height="360" loading="lazy">'
-    return f'''<a class="video-launch" href="{e(video['url'])}" data-video="{e(video['embed'])}" data-title="{e('Видеоотзыв: ' + video['name'] + ', ' + project)}">
+        poster = f'<img class="video-poster" src="{e(video["poster"])}" alt="" width="{int(video.get("width", 640))}" height="{int(video.get("height", 360))}" loading="lazy">'
+    local = f' data-local-video="{e(video["local"])}" data-poster="{e(video.get("poster") or "")}" data-vk-url="{e(video["url"])}"' if video.get('local') else ''
+    return f'''<a class="video-launch" href="{e(video.get('local') or video['url'])}" data-video="{e(video['embed'])}"{local} data-title="{e('Видеоотзыв: ' + video['name'] + ', ' + project)}">
       {poster}<span class="play-symbol">{icon('play')}</span><span class="video-label"><strong>Смотреть видеоотзыв</strong><span>{e(video['name'])} · {e(project)}</span></span>{icon('arrow')}</a>'''
 
 
-def quote(review):
-    context = f'<p class="quote-context">{e(review["context"])}</p>' if review.get("context") else ""
-    return f'''<blockquote><p>«{e(review['quote'])}»</p><footer><strong>{e(review['name'])}</strong><span>{e(review.get('project') or 'Из переписки с клиентом')}</span></footer></blockquote>{context}{image_link(review.get('image'), 'Открыть переписку')}'''
-
-
-def numbers(case, compact=False):
+def numbers(case):
     return f'''<dl class="case-numbers"><div><dt>{e(case['leadLabel'])}</dt><dd>{case['leads']}</dd></div>
       <div><dt>{e(case['costLabel'])}</dt><dd>{e(case['cost'])}<span> ₽</span></dd></div></dl>'''
 
@@ -62,54 +58,27 @@ def ledger(case):
     return f'''<div class="case-ledger"><p>Расход на рекламу <strong>{e(case['spend'])} ₽</strong></p><p>{e(case['sourceNote'])}</p></div>'''
 
 
-def feature(case, index):
+def case_card(case):
     cid = case["id"]
-    panels = [("result", "Результат", numbers(case) + ledger(case))]
-    if case["evidence"]:
-        panels.append(("evidence", "Доказательства", ''.join(image_link(x, 'Открыть скриншот') for x in case["evidence"])))
-    review = ""
+    media = ""
     if case.get("video"):
-        review += video_link(case["video"], case["name"])
+        media += video_link(case["video"], case["name"])
     if case.get("audio"):
-        review += audio_player(case["audio"])
+        media += audio_player(case["audio"])
     if case.get("review"):
-        review += quote(case["review"])
-    panels.append(("review", "Отзыв", review))
-    tabs = ''.join(f'<button type="button" id="{cid}-tab-{key}" data-panel="{cid}-{key}">{label}</button>' for key, label, _ in panels)
-    content = ''.join(f'<div class="case-panel" id="{cid}-{key}" data-case-panel><h4 class="panel-heading">{label}</h4>{body}</div>' for key, label, body in panels)
-    preview = f'''<a class="case-review-jump" href="#{cid}-review" data-review-jump="{cid}-tab-review">{'Видео и аудио клиента' if case.get('audio') else 'Видеоотзыв клиента' if case.get('video') else 'Отзыв из переписки'} {icon('arrow')}</a>'''
-    return f'''<article class="case-feature case-feature--{index}" id="{cid}" aria-labelledby="{cid}-title">
-      <div class="case-intro"><h3 id="{cid}-title">{e(case['name'])}</h3><p class="case-kind">{e(case['kind'])}<br>{e(case['location'])}</p>
-      <p class="case-description">{e(case['description'])}</p><p class="case-period">{e(case['period'])}</p>{preview}</div>
-      <div class="case-workspace" data-case-tabs><div class="case-tabs" aria-label="Материалы: {e(case['name'])}" hidden>{tabs}</div>{content}</div>
+        review = case["review"]
+        media += f'<div class="case-chat"><p>Переписка · {e(review["name"])}</p>{image_link(review["image"], "Открыть переписку")}</div>'
+    proof = ''.join(image_link(item, 'Увеличить скриншот') for item in case['evidence'])
+    return f'''<article class="case-card" id="{cid}" aria-labelledby="{cid}-title">
+      <div class="case-info"><h3 id="{cid}-title">{e(case['name'])}</h3><p class="case-kind">{e(case['kind'])}<br>{e(case['location'])}</p>
+      <p class="case-period">{e(case['period'])}</p>{numbers(case)}{ledger(case)}{media}</div>
+      <div class="case-report"><p>Рекламный кабинет</p>{proof}</div>
     </article>'''
-
-
-def quote_case(case):
-    cid = case["id"]
-    evidence = ''.join(image_link(x, 'Открыть скриншот') for x in case['evidence'])
-    return f'''<article class="case-quote" id="{cid}" aria-labelledby="{cid}-title">
-      <header class="case-quote-header"><div><h3 id="{cid}-title">{e(case['name'])}</h3><p class="case-kind">{e(case['kind'])} · {e(case['location'])}</p></div><p class="case-period">{e(case['period'])}</p></header>
-      <div class="case-quote-body"><div class="case-quote-results">{numbers(case)}{ledger(case)}{evidence}</div><div class="case-quote-review" id="{cid}-review">{quote(case['review'])}</div></div>
-    </article>'''
-
-
-def compact(case):
-    cid = case["id"]
-    evidence = ''.join(image_link(x, 'Открыть скриншот') for x in case["evidence"])
-    return f'''<article class="case-compact" id="{cid}" aria-labelledby="{cid}-title"><h3 id="{cid}-title">{e(case['name'])}</h3>
-      <p class="case-kind">{e(case['kind'])}<br>{e(case['location'])} · {e(case['period'])}</p>{numbers(case, True)}
-      <details class="case-details"><summary>Данные кампании {icon('expand')}</summary>{ledger(case)}{evidence}</details></article>'''
 
 
 def testimonial(item):
-    if item.get("audio"):
-        body = f'<div class="audio-person"><h3>{e(item["name"])}</h3><p>{e(item["project"])}</p></div>{audio_player(item["audio"])}'
-    else:
-        body = quote(item)
-    if item.get("caseId"):
-        body += f'<a class="text-link" href="#{e(item["caseId"])}">Кейс этого клиента {icon("arrow")}</a>'
-    return f'<li class="testimonial" id="review-{e(item["id"])}">{body}</li>'
+    project = f'<p>{e(item["project"])}</p>' if item.get('project') else ''
+    return f'''<li class="testimonial" id="review-{e(item['id'])}"><div class="review-person"><h3>{e(item['name'])}</h3>{project}</div>{image_link(item['image'], 'Открыть переписку')}</li>'''
 
 
 nav = ''.join(f'<a href="#{case["id"]}">{e(case["name"] if case["id"] != "konoplev" else "Коноплёва")}</a>' for case in DATA["cases"])
@@ -122,12 +91,11 @@ html = f'''{START}
         </header>
         <div class="portfolio-heading"><h2>Опыт в детских проектах</h2><p>Ниже — результаты продвижения детских проектов, преимущественно лагерей. Цифры показывают заявки и обращения, а не продажи или посещения занятий.</p></div>
         <nav class="case-index" aria-label="Перейти к кейсу">{nav}</nav>
-        <div class="featured-cases">{''.join(feature(case, i + 1) for i, case in enumerate(DATA['cases'][:2]))}{quote_case(DATA['cases'][2])}</div>
-        <div class="compact-cases">{''.join(compact(case) for case in DATA['cases'][3:])}</div>
+        <div class="case-list">{''.join(case_card(case) for case in DATA['cases'])}</div>
         <section class="testimonials" aria-labelledby="testimonials-title">
-          <div class="testimonials-heading"><div><h2 id="testimonials-title">Когда за работу говорят клиенты</h2><p>Ещё несколько отзывов и сообщений из переписок.</p></div>
-          <div class="gallery-controls" hidden><button type="button" data-gallery-prev aria-label="Предыдущие отзывы" aria-controls="testimonials-list">{icon('arrow')}</button><button type="button" data-gallery-next aria-label="Следующие отзывы" aria-controls="testimonials-list">{icon('arrow')}</button></div></div>
-          <ul class="testimonials-track" id="testimonials-list" tabindex="0" aria-label="Галерея отзывов">{''.join(testimonial(x) for x in DATA['testimonials'])}</ul>
+          <div class="testimonials-heading"><h2 id="testimonials-title">Отзывы клиентов</h2></div>
+          <div class="standalone-audio"><div class="review-person"><h3>Мария</h3><p>Лагерь «Чайка»</p></div>{audio_player(next(x['audio'] for x in DATA['testimonials'] if x.get('audio')))}</div>
+          <ul class="testimonials-grid">{''.join(testimonial(x) for x in DATA['testimonials'] if x.get('image'))}</ul>
         </section>
         <a class="portfolio-outro" href="https://vk.ru/reklama_lager"><span>Больше проектов и отзывов —<br> в моём VK-сообществе</span>{icon('arrow')}</a>
       </section>
