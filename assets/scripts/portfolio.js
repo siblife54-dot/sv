@@ -14,7 +14,7 @@ document.querySelectorAll("audio").forEach((audio) => {
     const message = document.createElement("p");
     message.className = "media-status";
     message.setAttribute("role", "status");
-    message.textContent = "Не удалось загрузить аудио. Попробуйте открыть файл по ссылке ниже.";
+    message.textContent = "Не удалось загрузить аудио. Проверьте соединение и обновите страницу, чтобы попробовать снова.";
     audio.after(message);
   });
 });
@@ -102,29 +102,15 @@ if (dialog && typeof dialog.showModal === "function") {
         image.alt = title;
         status.textContent = "Загружаем изображение…";
         image.addEventListener("load", () => { status.hidden = true; });
-        image.addEventListener("error", () => { status.textContent = "Не удалось загрузить изображение. Попробуйте открыть оригинал."; });
+        image.addEventListener("error", () => { status.textContent = "Не удалось загрузить изображение. Закройте просмотр и попробуйте снова."; });
         image.src = link.href;
-        fallback.textContent = "Открыть оригинал в новой вкладке";
         const stage = document.createElement("div");
         stage.className = "media-image-stage";
         stage.tabIndex = 0;
         stage.setAttribute("role", "region");
-        stage.setAttribute("aria-label", "Изображение. При увеличении используйте прокрутку для просмотра.");
+        stage.setAttribute("aria-label", "Скриншот. Используйте прокрутку для просмотра изображения.");
         stage.append(image);
-        const zoom = document.createElement("button");
-        zoom.type = "button";
-        zoom.textContent = "Реальный размер";
-        zoom.setAttribute("aria-pressed", "false");
-        zoom.addEventListener("click", () => {
-          const expanded = stage.classList.toggle("is-zoomed");
-          zoom.setAttribute("aria-pressed", String(expanded));
-          zoom.textContent = expanded ? "Вписать в экран" : "Реальный размер";
-          stage.scrollTo(0, 0);
-        });
-        const actions = document.createElement("div");
-        actions.className = "media-actions";
-        actions.append(zoom, fallback);
-        content.append(stage, status, actions);
+        content.append(stage, status);
       }
       dialog.showModal();
     });
@@ -139,5 +125,5 @@ if ("IntersectionObserver" in window && !reducedMotion.matches) {
       observer.unobserve(entry.target);
     });
   }, { threshold: .15 });
-  document.querySelectorAll(".portfolio-intro").forEach((element) => observer.observe(element));
+  document.querySelectorAll(".portfolio-intro, .work-process").forEach((element) => observer.observe(element));
 }

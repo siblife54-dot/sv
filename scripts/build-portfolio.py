@@ -33,11 +33,13 @@ def image_link(item, label):
       <span>{e(label)} {icon('expand')}</span></a>'''
 
 
-def audio_player(audio):
+def audio_player(audio, download=True):
     label = f"Аудиоотзыв: {audio['name']}, {audio['project']}"
-    return f'''<div class="audio-review"><div class="audio-heading"><span>Аудиоотзыв</span><span>{e(audio['duration'])}</span></div>
+    download_link = f'<a class="audio-download" href="{e(audio["src"])}" download>Скачать аудио</a>' if download else ''
+    heading = '<span>Аудиоотзыв</span>' if download else ''
+    return f'''<div class="audio-review"><div class="audio-heading">{heading}<span>{e(audio['duration'])}</span></div>
       <audio controls preload="none" aria-label="{e(label)}" src="{e(audio['src'])}">Ваш браузер не поддерживает аудио.</audio>
-      <a class="audio-download" href="{e(audio['src'])}" download>Скачать аудио</a></div>'''
+      {download_link}</div>'''
 
 
 def video_link(video, project):
@@ -55,7 +57,7 @@ def numbers(case):
 
 
 def ledger(case):
-    return f'''<div class="case-ledger"><p>Расход на рекламу <strong>{e(case['spend'])} ₽</strong></p><p>{e(case['sourceNote'])}</p></div>'''
+    return f'''<div class="case-ledger"><p>Расход на рекламу <strong>{e(case['spend'])} ₽</strong></p></div>'''
 
 
 def case_card(case):
@@ -67,7 +69,7 @@ def case_card(case):
         media += audio_player(case["audio"])
     if case.get("review"):
         review = case["review"]
-        media += f'<div class="case-chat"><p>Переписка · {e(review["name"])}</p>{image_link(review["image"], "Открыть переписку")}</div>'
+        media += f'<div class="case-chat">{image_link(review["image"], "Открыть переписку")}</div>'
     proof = ''.join(image_link(item, 'Увеличить скриншот') for item in case['evidence'])
     return f'''<article class="case-card" id="{cid}" aria-labelledby="{cid}-title">
       <div class="case-info"><h3 id="{cid}-title">{e(case['name'])}</h3><p class="case-kind">{e(case['kind'])}<br>{e(case['location'])}</p>
@@ -94,10 +96,24 @@ html = f'''{START}
         <div class="case-list">{''.join(case_card(case) for case in DATA['cases'])}</div>
         <section class="testimonials" aria-labelledby="testimonials-title">
           <div class="testimonials-heading"><h2 id="testimonials-title">Отзывы клиентов</h2></div>
-          <div class="standalone-audio"><div class="review-person"><h3>Мария</h3><p>Лагерь «Чайка»</p></div>{audio_player(next(x['audio'] for x in DATA['testimonials'] if x.get('audio')))}</div>
+          <div class="standalone-audio"><div class="review-person"><h3>Мария</h3><p>Лагерь «Чайка»</p></div>{audio_player(next(x['audio'] for x in DATA['testimonials'] if x.get('audio')), download=False)}</div>
           <ul class="testimonials-grid">{''.join(testimonial(x) for x in DATA['testimonials'] if x.get('image'))}</ul>
         </section>
         <a class="portfolio-outro" href="https://vk.ru/reklama_lager"><span>Больше проектов и отзывов —<br> в моём VK-сообществе</span>{icon('arrow')}</a>
+        <section class="work-process" id="how-i-work" aria-labelledby="process-title">
+          <div class="process-heading"><h2 id="process-title">Выстраиваю путь<br>от заявки <span>до посещения</span></h2>
+          <p>Не просто запускаю рекламу — помогаю понять, что приводит учеников на пробные занятия.</p></div>
+          <ol class="process-track" aria-label="Как я работаю: четыре этапа">
+            <li class="process-step"><span class="process-node" aria-hidden="true">01</span><h3>Разбираю продукт и оффер</h3><p>Смотрю, чем ваш центр реально может быть интересен родителям и ученикам.</p></li>
+            <li class="process-step"><span class="process-node" aria-hidden="true">02</span><h3>Запускаю привлечение</h3><p>Настраиваю рекламу и креативы так, чтобы приводить целевые обращения.</p></li>
+            <li class="process-step"><span class="process-node" aria-hidden="true">03</span><h3>Помогаю довести до записи</h3><p>Продумываем путь клиента: обработка заявки, запись на пробное, напоминания, дожим.</p></li>
+            <li class="process-step"><span class="process-node" aria-hidden="true">04</span><h3>Считаем не только заявки</h3><p>Смотрим глубже: заявки, записи, посещения и стоимость реального посещения.</p></li>
+          </ol>
+        </section>
+        <section class="final-cta" id="discuss" aria-labelledby="final-cta-title">
+          <div class="final-cta-copy"><h2 id="final-cta-title">Обсудим набор<br>в ваш центр?</h2><p>Посмотрим, как устроено привлечение, где теряются обращения и как доводить больше родителей до пробных занятий.</p></div>
+          <a class="button button-primary" href="https://t.me/igornbk">Обсудить набор учеников {icon('arrow')}</a>
+        </section>
       </section>
       <dialog class="media-dialog" aria-labelledby="media-title"><div class="media-dialog-header"><h2 id="media-title">Просмотр материала</h2><form method="dialog"><button type="submit" aria-label="Закрыть просмотр">Закрыть {icon('close')}</button></form></div><div id="media-content"></div></dialog>
       {END}'''
