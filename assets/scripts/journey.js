@@ -31,7 +31,7 @@ if (scene) {
       }
       return { element: node, position, activated: false };
     });
-    const result = { path, length, nodes, signal: svg.querySelector(".journey-signal"), trace: svg.querySelector(".journey-trace") };
+    const result = { path, length, nodes, signal: svg.querySelector(".journey-signal"), trace: svg.querySelector(".journey-trace"), impulse: svg.querySelector(".journey-impulse") };
     geometries.set(variant, result);
     return result;
   }
@@ -42,8 +42,9 @@ if (scene) {
     running = false;
     replay.firstChild.textContent = "Повторить путь ";
     scene.classList.toggle("is-arrived", arrived);
-    geometries.forEach(({ signal, trace, nodes }) => {
+    geometries.forEach(({ signal, trace, impulse, nodes }) => {
       signal.setAttribute("hidden", "");
+      impulse.style.opacity = "0";
       trace.style.opacity = arrived ? ".65" : "0";
       trace.style.strokeDasharray = "none";
       nodes.forEach((node) => { node.element.classList.remove("is-active"); node.activated = false; });
@@ -53,19 +54,23 @@ if (scene) {
   function play() {
     if (motion.matches || document.hidden) return;
     stop();
-    const { path, length, signal, trace, nodes } = geometry();
+    const { path, length, signal, trace, impulse, nodes } = geometry();
     const started = performance.now();
     const duration = 4600;
     running = true;
     hasPlayed = true;
     replay.firstChild.textContent = "Остановить движение ";
     signal.removeAttribute("hidden");
-    trace.style.opacity = ".9";
+    trace.style.opacity = ".45";
+    impulse.style.opacity = ".9";
     function draw(now) {
-      const progress = Math.min((now - started) / duration, 1);
+      const elapsed = Math.min((now - started) / duration, 1);
+      const progress = elapsed * elapsed * (3 - 2 * elapsed);
       const point = path.getPointAtLength(progress * length);
       signal.setAttribute("transform", `translate(${point.x} ${point.y})`);
       trace.style.strokeDasharray = `${progress * length} ${length}`;
+      impulse.style.strokeDasharray = `${Math.min(60, progress * length)} ${length}`;
+      impulse.style.strokeDashoffset = `${-Math.max(0, progress * length - 60)}`;
       nodes.forEach((node) => {
         if (progress >= node.position && !node.activated) {
           nodes.forEach((other) => other.element.classList.remove("is-active"));
@@ -87,7 +92,10 @@ if (scene) {
       play();
     }
   });
-  scene.querySelectorAll(".journey-choice").forEach((choice) => choice.addEventListener("change", () => stop()));
+  scene.querySelectorAll(".journey-choice").forEach((choice) => {
+    choice.addEventListener("change", () => stop());
+    choice.addEventListener("focus", () => stop());
+  });
   motion.addEventListener("change", () => { stop(); replay.hidden = motion.matches; });
   mobile.addEventListener("change", () => stop());
   document.addEventListener("visibilitychange", () => { if (document.hidden) stop(); });

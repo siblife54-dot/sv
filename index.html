@@ -120,8 +120,8 @@
         <a class="portfolio-outro" href="https://vk.ru/reklama_lager"><span>Больше проектов и отзывов —<br> в моём VK-сообществе</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
         <section class="work-process journey" id="how-i-work" aria-labelledby="process-title">
   <div class="journey-heading">
-    <h2 id="process-title">Заявка —<br><span>только начало.</span></h2>
-    <p>Важен весь путь: от первого интереса до человека, который пришёл в ваш центр.</p>
+    <h2 id="process-title">Работаю<br><span>дальше заявки.</span></h2>
+    <p>Нахожу, где прерывается путь. Связываю рекламу, запись и фактическое посещение.</p>
   </div>
   <div class="journey-scene">
     <fieldset class="journey-map">
@@ -133,75 +133,72 @@
       <input class="journey-choice" type="radio" name="journey-stage" id="journey-booking" value="booking" aria-describedby="journey-note-booking">
       <label class="journey-label journey-label--booking" for="journey-booking">Запись</label>
       <input class="journey-choice" type="radio" name="journey-stage" id="journey-visit" value="visit" aria-describedby="journey-note-visit" checked>
-      <label class="journey-label journey-label--visit" for="journey-visit"><strong>Посещение</strong><span>Человек пришёл в центр</span></label>
+      <label class="journey-label journey-label--visit" for="journey-visit"><strong>Посещение</strong><span>Человек дошёл до центра</span></label>
       <label class="journey-hit journey-hit--interest" for="journey-interest" aria-hidden="true"></label>
       <label class="journey-hit journey-hit--request" for="journey-request" aria-hidden="true"></label>
       <label class="journey-hit journey-hit--booking" for="journey-booking" aria-hidden="true"></label>
       <label class="journey-hit journey-hit--visit" for="journey-visit" aria-hidden="true"></label>
 
-      <svg class="journey-art journey-art--desktop" viewBox="0 0 1000 480" fill="none" aria-hidden="true" focusable="false">
+      <svg class="journey-art journey-art--desktop" viewBox="0 0 1000 440" fill="none" aria-hidden="true" focusable="false">
         <defs>
-          <linearGradient id="route-color" x1="0" y1="300" x2="850" y2="220" gradientUnits="userSpaceOnUse"><stop stop-color="#7796ff" stop-opacity=".2"/><stop offset=".45" stop-color="#a896ff"/><stop offset="1" stop-color="#9ce2ff"/></linearGradient>
-          <linearGradient id="gate-color" x1="780" y1="130" x2="875" y2="310" gradientUnits="userSpaceOnUse"><stop stop-color="#d8eeff"/><stop offset=".55" stop-color="#7796ff"/><stop offset="1" stop-color="#7796ff" stop-opacity="0"/></linearGradient>
-          <linearGradient id="gate-fill" x1="830" y1="145" x2="830" y2="310" gradientUnits="userSpaceOnUse"><stop stop-color="#7796ff" stop-opacity=".16"/><stop offset="1" stop-color="#7796ff" stop-opacity="0"/></linearGradient>
-          <filter id="route-glow" x="-30%" y="-70%" width="160%" height="240%"><feGaussianBlur stdDeviation="7"/></filter>
-          <path id="route-desktop" d="M-40 340 C35 340 62 280 140 280 C240 280 210 120 345 120 S490 370 590 340 S675 220 830 220"/>
+          <linearGradient id="journey-desktop-line" x1="0" y1="440" x2="810" y2="160" gradientUnits="userSpaceOnUse"><stop stop-color="#6b83d4" stop-opacity=".15"/><stop offset=".42" stop-color="#9899f4"/><stop offset="1" stop-color="#b2ddff"/></linearGradient>
+          <linearGradient id="journey-desktop-rim" x1="734" y1="84" x2="886" y2="236" gradientUnits="userSpaceOnUse"><stop stop-color="#c2e4ff"/><stop offset=".48" stop-color="#9199ed"/><stop offset="1" stop-color="#5268a3" stop-opacity=".25"/></linearGradient>
+          <radialGradient id="journey-desktop-core" cx="35%" cy="20%" r="90%"><stop stop-color="#253557"/><stop offset="1" stop-color="#101a30"/></radialGradient>
+          <filter id="journey-desktop-glow" x="-35%" y="-100%" width="170%" height="300%"><feGaussianBlur stdDeviation="4"/></filter>
+          <path id="route-desktop" d="M-60 338C40 338 70 318 150 318C260 318 295 225 390 225C460 225 510 210 585 210C690 210 690 160 810 160"/>
         </defs>
-        <g class="journey-inlets" stroke="#647cb5" stroke-opacity=".28"><path d="M-20 160C70 160 20 280 140 280"/><path d="M-20 410C80 410 70 280 140 280"/></g>
-        <use href="#route-desktop" stroke="url(#route-color)" stroke-width="18" opacity=".36" filter="url(#route-glow)"/>
-        <use href="#route-desktop" stroke="#253754" stroke-width="8"/>
-        <use href="#route-desktop" stroke="url(#route-color)" stroke-width="2"/>
-        <use class="journey-trace" href="#route-desktop" stroke="#d6e9ff" stroke-width="2"/>
-        <g class="journey-gate">
-          <ellipse cx="830" cy="322" rx="126" ry="29" stroke="#7796ff" stroke-opacity=".16"/>
-          <ellipse cx="830" cy="322" rx="89" ry="16" stroke="#9bcaff" stroke-opacity=".32"/>
-          <path d="M761 310V176a69 69 0 0 1 138 0v134" stroke="url(#gate-color)" stroke-opacity=".25"/>
-          <path d="M780 308V172a50 50 0 0 1 100 0v136" fill="url(#gate-fill)" stroke="url(#gate-color)" stroke-width="9" filter="url(#route-glow)"/>
-          <path d="M780 308V172a50 50 0 0 1 100 0v136" fill="url(#gate-fill)" stroke="url(#gate-color)" stroke-width="2"/>
-          <circle cx="830" cy="220" r="24" fill="#a7caff" fill-opacity=".12" stroke="#a7caff"/>
-          <path d="m820 220 7 7 14-16" stroke="#d6efff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <use href="#route-desktop" stroke="url(#journey-desktop-line)" stroke-width="12" opacity=".35" filter="url(#journey-desktop-glow)"/>
+        <use href="#route-desktop" stroke="#394a74" stroke-width="5" opacity=".4"/>
+        <use href="#route-desktop" stroke="url(#journey-desktop-line)" stroke-width="1.8"/>
+        <use class="journey-trace" href="#route-desktop" stroke="#d8eeff" stroke-width="2"/>
+        <use class="journey-impulse" href="#route-desktop" stroke="#e9f5ff" stroke-width="2.4" stroke-linecap="round"/>
+        <g class="journey-destination">
+          <circle class="journey-arrival-wave" cx="810" cy="160" r="76" stroke="#a6c7ff" stroke-opacity="0"/>
+          <circle cx="810" cy="160" r="88" stroke="#7e94ca" stroke-opacity=".12"/>
+          <circle cx="810" cy="160" r="76" stroke="url(#journey-desktop-rim)" stroke-width="7" opacity=".22" filter="url(#journey-desktop-glow)"/>
+          <circle cx="810" cy="160" r="76" stroke="url(#journey-desktop-rim)" stroke-width="1.2"/>
+          <circle cx="810" cy="160" r="63" fill="url(#journey-desktop-core)" stroke="#9aafff" stroke-opacity=".16"/>
+          <path class="journey-check" d="m795 160 10 10 22-24" stroke="#e1f1ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M810 68v8M894 160h8M810 244v8" stroke="#7e94ca" stroke-opacity=".5"/>
         </g>
-        <g class="journey-node" data-node="interest"><circle cx="140" cy="280" r="15"/><circle cx="140" cy="280" r="4"/></g>
-        <g class="journey-node" data-node="request"><circle cx="345" cy="120" r="15"/><circle cx="345" cy="120" r="4"/></g>
-        <g class="journey-node" data-node="booking"><circle cx="590" cy="340" r="15"/><circle cx="590" cy="340" r="4"/></g>
-        <g class="journey-signal" hidden><circle r="13" fill="#a7caff" fill-opacity=".15"/><circle r="4" fill="#edf8ff"/></g>
+        <g class="journey-node" data-node="interest"><circle cx="150" cy="318" r="11"/><circle cx="150" cy="318" r="3"/></g><g class="journey-node" data-node="request"><circle cx="390" cy="225" r="11"/><circle cx="390" cy="225" r="3"/></g><g class="journey-node" data-node="booking"><circle cx="585" cy="210" r="11"/><circle cx="585" cy="210" r="3"/></g>
+        <g class="journey-signal" hidden><circle r="11" fill="#bddbff" fill-opacity=".08"/><circle r="6" fill="#bddbff" fill-opacity=".22"/><circle r="2.6" fill="#f2f8ff"/></g>
       </svg>
 
-      <svg class="journey-art journey-art--mobile" viewBox="0 0 360 580" fill="none" aria-hidden="true" focusable="false">
+      <svg class="journey-art journey-art--mobile" viewBox="0 0 360 500" fill="none" aria-hidden="true" focusable="false">
         <defs>
-          <linearGradient id="route-mobile-color" x1="0" y1="80" x2="200" y2="450" gradientUnits="userSpaceOnUse"><stop stop-color="#7796ff" stop-opacity=".35"/><stop offset=".5" stop-color="#a896ff"/><stop offset="1" stop-color="#9ce2ff"/></linearGradient>
-          <linearGradient id="gate-mobile-color" x1="160" y1="365" x2="240" y2="515" gradientUnits="userSpaceOnUse"><stop stop-color="#d8eeff"/><stop offset=".6" stop-color="#7796ff"/><stop offset="1" stop-color="#7796ff" stop-opacity="0"/></linearGradient>
-          <filter id="route-mobile-glow" x="-40%" y="-20%" width="180%" height="140%"><feGaussianBlur stdDeviation="6"/></filter>
-          <path id="route-mobile" d="M-30 90C20 90 35 110 60 110C130 110 145 220 260 220C300 220 280 330 140 330C60 330 40 450 200 450"/>
+          <linearGradient id="journey-mobile-line" x1="0" y1="500" x2="230" y2="380" gradientUnits="userSpaceOnUse"><stop stop-color="#6b83d4" stop-opacity=".15"/><stop offset=".42" stop-color="#9899f4"/><stop offset="1" stop-color="#b2ddff"/></linearGradient>
+          <linearGradient id="journey-mobile-rim" x1="173" y1="323" x2="287" y2="437" gradientUnits="userSpaceOnUse"><stop stop-color="#c2e4ff"/><stop offset=".48" stop-color="#9199ed"/><stop offset="1" stop-color="#5268a3" stop-opacity=".25"/></linearGradient>
+          <radialGradient id="journey-mobile-core" cx="35%" cy="20%" r="90%"><stop stop-color="#253557"/><stop offset="1" stop-color="#101a30"/></radialGradient>
+          <filter id="journey-mobile-glow" x="-35%" y="-100%" width="170%" height="300%"><feGaussianBlur stdDeviation="4"/></filter>
+          <path id="route-mobile" d="M-40 92C25 92 35 100 70 100C150 100 250 120 250 200C250 255 95 255 95 310C95 370 190 380 230 380"/>
         </defs>
-        <g class="journey-inlets" stroke="#647cb5" stroke-opacity=".28"><path d="M-20 25C50 25 0 110 60 110"/><path d="M-20 170C45 170 0 110 60 110"/></g>
-        <use href="#route-mobile" stroke="url(#route-mobile-color)" stroke-width="14" opacity=".4" filter="url(#route-mobile-glow)"/>
-        <use href="#route-mobile" stroke="#253754" stroke-width="7"/>
-        <use href="#route-mobile" stroke="url(#route-mobile-color)" stroke-width="2"/>
-        <use class="journey-trace" href="#route-mobile" stroke="#d6e9ff" stroke-width="2"/>
-        <g class="journey-gate">
-          <ellipse cx="200" cy="514" rx="87" ry="18" stroke="#7796ff" stroke-opacity=".22"/>
-          <ellipse cx="200" cy="514" rx="63" ry="10" stroke="#9bcaff" stroke-opacity=".35"/>
-          <path d="M145 505V410a55 55 0 0 1 110 0v95" stroke="url(#gate-mobile-color)" stroke-opacity=".3"/>
-          <path d="M160 505V410a40 40 0 0 1 80 0v95" stroke="url(#gate-mobile-color)" stroke-width="8" filter="url(#route-mobile-glow)"/>
-          <path d="M160 505V410a40 40 0 0 1 80 0v95" fill="#7796ff" fill-opacity=".06" stroke="url(#gate-mobile-color)" stroke-width="2"/>
-          <circle cx="200" cy="450" r="20" fill="#a7caff" fill-opacity=".12" stroke="#a7caff"/>
-          <path d="m192 450 6 6 12-14" stroke="#d6efff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <use href="#route-mobile" stroke="url(#journey-mobile-line)" stroke-width="12" opacity=".35" filter="url(#journey-mobile-glow)"/>
+        <use href="#route-mobile" stroke="#394a74" stroke-width="5" opacity=".4"/>
+        <use href="#route-mobile" stroke="url(#journey-mobile-line)" stroke-width="1.8"/>
+        <use class="journey-trace" href="#route-mobile" stroke="#d8eeff" stroke-width="2"/>
+        <use class="journey-impulse" href="#route-mobile" stroke="#e9f5ff" stroke-width="2.4" stroke-linecap="round"/>
+        <g class="journey-destination">
+          <circle class="journey-arrival-wave" cx="230" cy="380" r="57" stroke="#a6c7ff" stroke-opacity="0"/>
+          <circle cx="230" cy="380" r="69" stroke="#7e94ca" stroke-opacity=".12"/>
+          <circle cx="230" cy="380" r="57" stroke="url(#journey-mobile-rim)" stroke-width="7" opacity=".22" filter="url(#journey-mobile-glow)"/>
+          <circle cx="230" cy="380" r="57" stroke="url(#journey-mobile-rim)" stroke-width="1.2"/>
+          <circle cx="230" cy="380" r="44" fill="url(#journey-mobile-core)" stroke="#9aafff" stroke-opacity=".16"/>
+          <path class="journey-check" d="m215 380 10 10 22-24" stroke="#e1f1ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M230 307v8M295 380h8M230 445v8" stroke="#7e94ca" stroke-opacity=".5"/>
         </g>
-        <g class="journey-node" data-node="interest"><circle cx="60" cy="110" r="13"/><circle cx="60" cy="110" r="4"/></g>
-        <g class="journey-node" data-node="request"><circle cx="260" cy="220" r="13"/><circle cx="260" cy="220" r="4"/></g>
-        <g class="journey-node" data-node="booking"><circle cx="140" cy="330" r="13"/><circle cx="140" cy="330" r="4"/></g>
-        <g class="journey-signal" hidden><circle r="12" fill="#a7caff" fill-opacity=".15"/><circle r="4" fill="#edf8ff"/></g>
+        <g class="journey-node" data-node="interest"><circle cx="70" cy="100" r="11"/><circle cx="70" cy="100" r="3"/></g><g class="journey-node" data-node="request"><circle cx="250" cy="200" r="11"/><circle cx="250" cy="200" r="3"/></g><g class="journey-node" data-node="booking"><circle cx="95" cy="310" r="11"/><circle cx="95" cy="310" r="3"/></g>
+        <g class="journey-signal" hidden><circle r="11" fill="#bddbff" fill-opacity=".08"/><circle r="6" fill="#bddbff" fill-opacity=".22"/><circle r="2.6" fill="#f2f8ff"/></g>
       </svg>
     </fieldset>
     <div class="journey-bottom">
       <div class="journey-notes">
-        <div class="journey-note" id="journey-note-interest"><h3>Зацепить тех, кому подходит центр.</h3><p>Оффер и реклама дают родителю повод начать разговор.</p></div>
-        <div class="journey-note" id="journey-note-request"><h3>Не терять контакт после отклика.</h3><p>Разбираем, как быстро и по делу отвечать на обращение.</p></div>
-        <div class="journey-note" id="journey-note-booking"><h3>Превратить интерес в договорённость.</h3><p>Пробное занятие, понятный следующий шаг и напоминание перед встречей.</p></div>
-        <div class="journey-note" id="journey-note-visit"><h3>Считать тех, кто дошёл.</h3><p>Отмечаем реальные посещения и их стоимость. Заявка остаётся промежуточной точкой.</p></div>
+        <div class="journey-note" id="journey-note-interest"><h3>Клик ещё не означает интерес.</h3><p>Соединяю предложение центра с запросом родителя. Человек должен понимать, зачем ему занятие.</p></div>
+        <div class="journey-note" id="journey-note-request"><h3>После заявки нужен диалог.</h3><p>Смотрю, что происходит после заявки: когда отвечают и какой следующий шаг предлагают.</p></div>
+        <div class="journey-note" id="journey-note-booking"><h3>Запись должна стать встречей.</h3><p>Убираю неопределённость перед занятием: время, место, подтверждение и напоминание.</p></div>
+        <div class="journey-note" id="journey-note-visit"><h3>Важен тот, кто пришёл.</h3><p>Сопоставляю заявки, записи и посещения. Видно, где теряются люди и сколько стоит реальный приход в центр.</p></div>
       </div>
-      <div class="journey-controls"><span class="journey-hint">Выберите точку маршрута</span><button type="button" class="journey-replay" hidden>Повторить путь <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 10a8 8 0 1 1 1 7M4 4v6h6"/></svg></button></div>
+      <div class="journey-controls"><span class="journey-hint">Нажмите на этап</span><button type="button" class="journey-replay" hidden>Повторить путь <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 10a8 8 0 1 1 1 7M4 4v6h6"/></svg></button></div>
     </div>
   </div>
 </section>
