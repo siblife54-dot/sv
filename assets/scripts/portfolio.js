@@ -125,5 +125,5 @@ if ("IntersectionObserver" in window && !reducedMotion.matches) {
       observer.unobserve(entry.target);
     });
   }, { threshold: .15 });
-  document.querySelectorAll(".portfolio-intro, .work-process").forEach((element) => observer.observe(element));
+  document.querySelectorAll(".portfolio-intro").forEach((element) => observer.observe(element));
 }

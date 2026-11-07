@@ -100,16 +100,7 @@ html = f'''{START}
           <ul class="testimonials-grid">{''.join(testimonial(x) for x in DATA['testimonials'] if x.get('image'))}</ul>
         </section>
         <a class="portfolio-outro" href="https://vk.ru/reklama_lager"><span>Больше проектов и отзывов —<br> в моём VK-сообществе</span>{icon('arrow')}</a>
-        <section class="work-process" id="how-i-work" aria-labelledby="process-title">
-          <div class="process-heading"><h2 id="process-title">Выстраиваю путь<br>от заявки <span>до посещения</span></h2>
-          <p>Не просто запускаю рекламу — помогаю понять, что приводит учеников на пробные занятия.</p></div>
-          <ol class="process-track" aria-label="Как я работаю: четыре этапа">
-            <li class="process-step"><span class="process-node" aria-hidden="true">01</span><h3>Разбираю продукт и оффер</h3><p>Смотрю, чем ваш центр реально может быть интересен родителям и ученикам.</p></li>
-            <li class="process-step"><span class="process-node" aria-hidden="true">02</span><h3>Запускаю привлечение</h3><p>Настраиваю рекламу и креативы так, чтобы приводить целевые обращения.</p></li>
-            <li class="process-step"><span class="process-node" aria-hidden="true">03</span><h3>Помогаю довести до записи</h3><p>Продумываем путь клиента: обработка заявки, запись на пробное, напоминания, дожим.</p></li>
-            <li class="process-step"><span class="process-node" aria-hidden="true">04</span><h3>Считаем не только заявки</h3><p>Смотрим глубже: заявки, записи, посещения и стоимость реального посещения.</p></li>
-          </ol>
-        </section>
+        {(ROOT / "templates/journey.html").read_text()}
         <section class="final-cta" id="discuss" aria-labelledby="final-cta-title">
           <div class="final-cta-copy"><h2 id="final-cta-title">Обсудим набор<br>в ваш центр?</h2><p>Посмотрим, как устроено привлечение, где теряются обращения и как доводить больше родителей до пробных занятий.</p></div>
           <a class="button button-primary" href="https://t.me/igornbk">Обсудить набор учеников {icon('arrow')}</a>
